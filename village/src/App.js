@@ -43,9 +43,16 @@ class App extends Component {
 }
 
   render() {
+    if (!this.state.smurfs.length ) {
+      return (
+        <div className="App">
+          <h1>Retreiving Smurfs From the Village...</h1>
+        </div>
+      );
+    }else{
     return (
       <div className="App">
-        <Route exact path='/addsmurf' component={SmurfForm}/>
+        <Route exact path='/addsmurf' render={props => <SmurfForm {...props} smurfs={this.state.smurfs} />}/>
         <Route
           exact 
           path='/' 
@@ -59,6 +66,7 @@ class App extends Component {
       </div>
     );
   }
+}
 }
 
 export default App;
