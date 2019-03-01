@@ -17,14 +17,8 @@ class SmurfForm extends Component {
         .post('http://localhost:3333/smurfs', {...this.state})
         .then(res => this.setState({smurfs:res.data}))
         .catch(err => console.log(err))
-
-      this.setState({
-        newFriend: {
-          name: "",
-          age: "",
-          email: ""
-        }
-      });
+      this.props.history.push('/')
+      
 }
 
   handleInputChange = e => {
